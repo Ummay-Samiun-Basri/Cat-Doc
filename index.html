@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cat Doctor – Caring for Cats with Love</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <script src="https://kit.fontawesome.com/a54d2cbf95.js" crossorigin="anonymous" defer></script>
+
+  <style>
+    :root {
+      --accent-orange: #ffb066;
+      --accent-teal: #2fb5a5;
+      --text-dark: #222;
+      --text-light: #666;
+      --bg-light: #fafafa;
+      --max-width: 1150px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ======================= NAVBAR ======================= */
+    header {
+      width: 100%;
+      background: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.2s ease-in;
+    }
+
+    nav a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* Mobile Nav */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    /* ======================= HERO ======================= */
+    .hero {
+      background: url("https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1960&q=80") center/cover no-repeat;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+      color: #fff;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-orange);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.25s ease-in;
+    }
+
+    .btn-primary:hover {
+      background: #ffa249;
+    }
+
+    /* ======================= SECTIONS ======================= */
+    section {
+      padding: 5rem 1.25rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      color: var(--accent-teal);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-orange);
+      border-radius: 2px;
+    }
+
+    /* Services */
+    .services {
+      max-width: var(--max-width);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-teal);
+    }
+
+    /* About */
+    .about-container {
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-container img {
+      flex: 1 1 320px;
+      border-radius: 20px;
+      width: 100%;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .about-text {
+      flex: 1 1 320px;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-teal);
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    /* Tips */
+    .tips-grid {
+      max-width: var(--max-width);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .tip-card {
+      background: #fff;
+      padding: 1.25rem 1.5rem 1.75rem;
+      border-left: 6px solid var(--accent-orange);
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .tip-card h4 {
+      color: var(--accent-teal);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #fff;
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      padding: 1.5rem 2rem;
+      border-left: 6px solid var(--accent-teal);
+      background: var(--bg-light);
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .testimonial p {
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonial span {
+      font-weight: 500;
+      color: var(--accent-teal);
+    }
+
+    /* Contact */
+    .contact-container {
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-details {
+      flex: 1 1 280px;
+    }
+
+    .contact-details h4 {
+      margin-bottom: 1rem;
+      color: var(--accent-teal);
+    }
+
+    .contact-details p {
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+
+    form {
+      flex: 1 1 320px;
+      background: #fff;
+      padding: 2rem 1.5rem 2.5rem;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    form button {
+      align-self: flex-start;
+      width: fit-content;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--accent-teal);
+      color: #fff;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #fff;
+      margin: 0 0.6rem;
+      font-size: 1.2rem;
+      transition: opacity 0.25s ease-in;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.8;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 60%;
+        height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        box-shadow: -2px 0 12px rgba(0, 0, 0, 0.05);
+        transition: right 0.3s ease-in;
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ======================= HEADER & NAV ======================= -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">Cat Doctor</a>
+
+      <nav>
+        <ul id="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tips">Cat Care Tips</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero">
+    <div>
+      <h1>Compassionate Care for Your Feline Friend</h1>
+      <a href="#contact" class="btn-primary">Make an Appointment</a>
+    </div>
+  </section>
+
+  <!-- ======================= SERVICES ======================= -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="images/consultation.png" alt="Consultation" />
+        <h3>Consultation</h3>
+        <p>Comprehensive health check-ups and tailored advice for your cat's unique needs.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/vaccination.png" alt="Vaccination" />
+        <h3>Vaccination</h3>
+        <p>Protective vaccines administered with gentle handling to keep your cat healthy.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/surgery.png" alt="Surgery" />
+        <h3>Surgery</h3>
+        <p>Advanced surgical procedures performed with utmost safety and care.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/dental.png" alt="Dental Care" />
+        <h3>Dental Care</h3>
+        <p>Oral examinations and cleanings to maintain your cat's bright smile.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ABOUT ======================= -->
+  <section id="about">
+    <h2 class="section-title">Why Choose Us</h2>
+    <div class="about-container">
+      <img src="https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?auto=format&fit=crop&w=1200&q=80" alt="Dr. Cat" />
+      <div class="about-text">
+        <h3>Dr. Laila Rahman, DVM</h3>
+        <p>With 12+ years of experience in feline medicine, Dr. Laila is dedicated to providing compassionate, specialized care for every cat. Our clinic is equipped with cutting‑edge technology, ensuring the best outcomes for diagnostics and treatment.</p>
+        <p>We understand that cats have unique needs. That's why our environment is calm, cat‑friendly, and designed to minimize stress.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TIPS ======================= -->
+  <section id="tips">
+    <h2 class="section-title">Cat Care Tips</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h4>Hydration Matters</h4>
+        <p>Encourage your cat to drink fresh water by placing multiple bowls around your home or using a cat fountain.</p>
+      </div>
+      <div class="tip-card">
+        <h4>Regular Grooming</h4>
+        <p>Brush your cat weekly to reduce shedding and hairballs, and to promote healthy skin.</p>
+      </div>
+      <div class="tip-card">
+        <h4>Interactive Play</h4>
+        <p>Engage your cat with toys that stimulate their hunting instincts to keep them active and mentally stimulated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TESTIMONIALS ======================= -->
+  <section id="testimonials">
+    <h2 class="section-title">Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Dr. Laila treated Luna like her own cat. The staff is friendly and the clinic is spotless!"</p>
+        <span>&mdash; Farah S.</span>
+      </div>
+      <div class="testimonial">
+        <p>"Best feline vet in town! My Siamese, Coco, recovered quickly after surgery thanks to their amazing care."</p>
+        <span>&mdash; Riad Mohammad Suman</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT ======================= -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+      <div class="contact-details">
+        <h4>Clinic Address</h4>
+        <p>South Khulshi, Block-C, Lane-01, Chattogram</p>
+        <h4>Phone</h4>
+        <p>+880 1777 654321</p>
+        <h4>Email</h4>
+        <p>usbworkoutlook@gmail.com</p>
+      </div>
+
+      <form action="https://formspree.io/f/{your_id}" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 Cat Doctor Clinic. All rights reserved.</p>
+  </footer>
+
+  <!-- ======================= SCRIPTS ======================= -->
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("open");
+    });
+
+    // Close nav when clicking a link on mobile
+    document.querySelectorAll("nav a").forEach((link) =>
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("open");
+      })
+    );
+  </script>
+</body>
+</html>
